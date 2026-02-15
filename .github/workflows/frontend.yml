@@ -6,10 +6,8 @@ on:
 jobs:
   Frontend-Actions:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./frontend
       steps:
+          working-directory: ./frontend
         - name: Check out repository code
         - uses: actions/checkout@v5
         - run: "npm install"
