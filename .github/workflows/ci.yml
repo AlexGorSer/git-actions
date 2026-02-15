@@ -3,8 +3,14 @@ on: pull_request
 jobs:
   changes:
     runs-on: ubuntu-latest
+
+    permissions:
+      pull-requests: read
+
+    outputs:
+      backend: ${{ steps.filter.outputs.backend }}
+      frontend: ${{ steps.filter.outputs.frontend }}
     steps:
-      - uses: actions/checkout@v5
       - uses: dorny/paths-filter@v3
         id: filter
         with:
@@ -13,9 +19,10 @@ jobs:
               - 'backend/**'
             frontend:
               - 'frontend/**'
+
   backend:
     needs: changes
-    if: steps.changes.outputs.backend == 'true'
+    if: ${{ needs.changes.outputs.backend == 'true' }}
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -27,12 +34,12 @@ jobs:
 
   frontend:
     needs: changes
-    if: steps.changes.outputs.frontend == 'true'
+    if: ${{ needs.changes.outputs.frontend == 'true' }}
     runs-on: ubuntu-latest
     defaults:
       run:
         working-directory: ./frontend
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - run: npm install
       - run: npm test
