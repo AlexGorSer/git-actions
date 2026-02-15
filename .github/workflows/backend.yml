@@ -5,12 +5,13 @@ on:
       - "backend/**"
 jobs:
   Backend-Actions:
-    runs-on: ubuntu-latest     
+    runs-on: ubuntu-latest
+    defaults:
+      run: 
+        working-directory: ./backend  
     steps:
       - name: Check out repository code
       - uses: actions/checkout@v5
       - run: "npm install"
-        working-directory: ./backend
       - run: "npm run test"
-        working-directory: ./backend
 
