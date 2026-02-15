@@ -9,6 +9,7 @@ jobs:
     steps:
       - name: Check out repository code
       - uses: actions/checkout@v5
-      - working-directory: ./frontend
       - run: "npm install"
+        working-directory: ./frontend
       - run: "npm run test"
+        working-directory: ./frontend

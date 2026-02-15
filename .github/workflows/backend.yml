@@ -9,7 +9,8 @@ jobs:
     steps:
       - name: Check out repository code
       - uses: actions/checkout@v5
-      - working-directory: ./backend
       - run: "npm install"
+        working-directory: ./backend
       - run: "npm run test"
+        working-directory: ./backend
 
