@@ -10,7 +10,7 @@ jobs:
       run: 
         working-directory: ./frontend
     steps:
-      - name: Check out repository code
-      - uses: actions/checkout@v5
-      - run: "npm install"
-      - run: "npm run test"
+      - name: start frontend check
+        uses: actions/checkout@v5
+      - run: npm install
+      - run: npm run test
