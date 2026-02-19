@@ -1,9 +1,10 @@
 ---
-name: 🚀 Новая фича
-description: Предложить новую функциональность
+name: "\U0001F680 Новая фича"
+about: New Feature
 title: "[FEAT] "
-labels: ["feature"]
-assignees: []
+labels: ''
+assignees: ''
+
 ---
 
 ## 📝 Описание задачи
