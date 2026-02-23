@@ -32,15 +32,15 @@ jobs:
         uses: actions/checkout@v5
       - run: npm install
       - name: Check Eslint
-        run: npm ci:lint
+        run: npm run ci:lint
       - name: Check Prettier
-        run: npm ci:format
+        run: npm run ci:format
       - name: Typecheck
-        run: npm typecheck
+        run: npm run typecheck
       - name: Tests
-        run: npm test
+        run: npm run test
       - name: Build
-        run: npm build
+        run: npm run build
 
   frontend:
     needs: changes
