@@ -28,9 +28,19 @@ jobs:
       run:
         working-directory: ./backend
     steps:
-      - uses: actions/checkout@v5
+      - name: Install Dependencies
+        uses: actions/checkout@v5
       - run: npm install
-      - run: npm test
+      - name: Check Eslint
+        run: npm ci:lint
+      - name: Check Prettier
+        run: npm ci:format
+      - name: Typecheck
+        run: npm typecheck
+      - name: Tests
+        run: npm test
+      - name: Build
+        run: npm build
 
   frontend:
     needs: changes
@@ -42,4 +52,7 @@ jobs:
     steps:
       - uses: actions/checkout@v5
       - run: npm install
+      - run: npm typecheck
+      - run: npm ci:format
+      - run: npm lint
       - run: npm test
