@@ -30,8 +30,9 @@ jobs:
     steps:
       - name: Install Dependencies
         uses: actions/checkout@v5
-      - run: npm install
-      - run: npm generate:dev
+      - run: npm ci
+      - name: Prisma migration
+        run: npm run generate:dev
       - name: Check Eslint
         run: npm run ci:lint
       - name: Check Prettier
